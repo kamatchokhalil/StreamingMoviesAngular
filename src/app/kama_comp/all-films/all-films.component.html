@@ -1,0 +1,36 @@
+<!--
+<br>
+
+
+<div>
+<h6><label style="margin-left: 700px;display: block" for="disabledSelect" class="form-label">Recherche :</label></h6>
+  <div class="input-group" [ngStyle]="{width: '700px',margin:'auto'}">
+
+    <div style="width: 300px">
+      <select id="disabledSelect" class="form-select" [(ngModel)]="critere" (change)="selectOption($event)">
+        <option value="undefined" disabled selected>Critères</option>
+        <option value="1">Titre</option>
+        <option value="2">Catégorie</option>
+        <option value="3">Qualité</option>
+      </select>
+    </div>
+
+
+    <input type="text" class="form-control input-sm btn-outline-secondary" name="txtSearch"
+           placeholder="Recherche selon vos critères" [(ngModel)]="search" (keyup)="lauchSearch()" />
+
+   &lt;!&ndash; <button (click)="lauchSearch()"> Search </button>&ndash;&gt;
+  </div>
+</div>
+
+<br>
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm" *ngFor="let item of filmsList">
+      <app-film-item (deleteFilmEvent)="deleteFilm($event)" [itemOfFilmsList]="item"
+                     [titleFromAllFilms]="titleFilmFromBody" [listFav]="listFavoris" [username]="username"></app-film-item>
+    </div>
+  </div>
+</div>

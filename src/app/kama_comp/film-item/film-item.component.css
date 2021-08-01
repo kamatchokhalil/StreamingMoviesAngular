@@ -1,0 +1,80 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 3rem;
+    color: #d3d3d3;
+}
+
+.full {
+    color: red;
+}
+
+.half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: red;
+}
+
+.card {
+    width: 40rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #2d323e;
+    color: white;
+}
+
+#iconplay{
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    display: none;
+}
+
+#imagefilm:hover + #iconplay{
+    display: block;
+    cursor: pointer;
+}
+
+a:hover> .fs-2 .mb-3{
+    display: block;
+}
+
+a:hover> .fs-2 .mb-3{
+    display: block;
+}
+iframe {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.list-group-item{
+    background-color: #7D818C;
+    color: white;
+}
+
+.card-footer{
+    background-color: white;
+}
+
+
+
+
+mat-icon{
+
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  /*  transform: scale(2);*/
+}
+
+.card:hover> mat-icon{
+    display: block;
+}
+
+.card:hover > #iconplay {
+    display: block;
+}

@@ -1,0 +1,7 @@
+<div *ngFor="let p of cmd1">
+    {{p.comdesc}}
+    {{p.comdate}}
+    {{p.id}}
+
+    <button (click)="onDelete(p.id)">supp</button>
+    <a routerLink="/update/{{p.id}}"><button type="button">Update</button></a></div>

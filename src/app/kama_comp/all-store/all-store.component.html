@@ -1,0 +1,18 @@
+<div style="display: flex; flex-wrap: wrap">
+
+        <div class="col-3" *ngFor="let item of storesList">
+            <app-item-store (deleteStoreEvent)="deleteStore($event)" [itemStore]="item"></app-item-store>
+        </div>
+
+
+</div>
+
+
+
+<!--<ng-adsense
+    [adClient]="'pub-1919355092052389'"
+    [adSlot]="6259519706"
+    [display]="'inline-block'"
+    [width]="320"
+    [height]="108"
+></ng-adsense>-->

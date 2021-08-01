@@ -1,0 +1,45 @@
+
+<div class="card text-center" style="width: 80%; margin: auto; position: relative">
+    <div class="card-header">
+        Update Supplier
+    </div>
+    <div class="card-body" style="margin-left: -500px">
+       
+        <form >
+
+        <div class="form-group">
+            <label for="name">Supplier Name</label>
+            <input name="supplier_name" type="text" class="form-control input-lg" id="supplier_name" placeholder="enter supplier name" [(ngModel)]="data.nomFournisseur">
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="name">Address</label>
+            <input type="text" class="form-control input-lg" id="address" placeholder="Enter address" name="address" [(ngModel)]="data.adresse">
+
+        </div>
+        <br>
+      
+      
+        <br>
+
+        <div class="form-group">
+            <label for="region">Phone Number</label>
+            <input name="name" type="text" class="form-control input-lg" id="number" placeholder="Enter number" [(ngModel)]="data.numTel">
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="region">Email</label>
+            <input name="email" type="text" class="form-control input-lg" id="email" placeholder="Enter email" [(ngModel)]="data.email">
+
+        </div>
+        <br>
+
+        
+        <button class="btn btn-primary  float-right m-5" (click)="saveModifcation()" >Modify Supplier</button>
+        </form>
+    </div>
+</div>

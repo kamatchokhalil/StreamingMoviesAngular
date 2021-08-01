@@ -1,0 +1,65 @@
+
+<div class="card text-center" style="width: 80%; margin: auto; position: relative">
+    <div class="card-header">
+        Add User
+        <!--        <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>-->
+    </div>
+    <div class="card-body" style="margin-left: -500px">
+       
+        <form >
+        <!--        <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+
+        <div class="form-group">
+            <label for="name">username</label>
+            <input name="username" type="text" class="form-control input-lg" id="username" placeholder="enter username" [(ngModel)]="data.username">
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="name">email</label>
+            <input type="text" class="form-control input-lg" id="email" placeholder="Enter email" name="email" [(ngModel)]="data.email">
+
+        </div>
+        <br>
+      
+      
+        <br>
+
+        <div class="form-group">
+            <label for="region">name</label>
+            <input name="name" type="text" class="form-control input-lg" id="name" placeholder="Enter name" [(ngModel)]="data.name">
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="region">last name</label>
+            <input name="lastName" type="text" class="form-control input-lg" id="lastName" placeholder="Enter lastName" [(ngModel)]="data.lastName">
+
+        </div>
+        <br>
+     
+        <div class="form-group">
+            <label for="name">role </label>
+            <input name="role" type="text" class="form-control input-lg" id="role"
+                   placeholder="role" [(ngModel)]="data.role">
+
+        </div>
+
+        
+        <button class="btn btn-primary  float-right m-5" (click)="onSaveModifcation()" >modify user</button>
+        </form>
+    </div>
+</div>

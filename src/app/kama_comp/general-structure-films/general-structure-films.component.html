@@ -1,0 +1,211 @@
+<div class="mycontainer">
+    <!--------toppane-------->
+    <div class="toppane">
+
+        <div class="divcontent" style="margin-top: 50px">
+            <div class="input-group" style="width: 700px; margin: auto">
+
+                <div style="width: 200px; height: 50px; font-size: 20px; margin-top: 20px">
+                    <select style="height: 50px; font-size: 20px" id="disabledSelect" class="form-select"
+                            [(ngModel)]="critere">
+                        <option value="undefined" disabled selected>Critères</option>
+                        <option value="1">Titre</option>
+                        <option value="2">Catégorie</option>
+                        <option value="3">Qualité</option>
+                    </select>
+                </div>
+
+
+                <input style="height: 50px; font-size: 20px; margin-top: 20px" type="text" class="form-control"
+                       name="txtSearch"
+                       placeholder="Recherche selon vos critères" [(ngModel)]="search" (keyup)="lauchSearch()"/>
+
+                <button class="btn-success w-100" style="margin-top: 20px" (click)="lauchSearch()"> Search</button>
+            </div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-secondary" (click)="getAllMovies()"
+                                style="height: 30px; font-size: 14px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-film" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+                            </svg>
+                            All movies
+                        </button>
+                    </li>
+
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-secondary" (click)="getLastMovies()"
+                                style="height: 30px; font-size: 14px;">
+                            <svg height="20" width="30" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<path style="fill:#2196F3;" d="M74.667,74.667h362.667c41.237,0,74.667,33.429,74.667,74.667v213.333
+	c0,41.237-33.429,74.667-74.667,74.667H74.667C33.429,437.333,0,403.904,0,362.667V149.333C0,108.096,33.429,74.667,74.667,74.667z"
+/>
+                                <g>
+	<path style="fill:#FAFAFA;" d="M181.333,309.333c-3.357,0-6.519-1.581-8.533-4.267L128,245.333v53.333
+		c0,5.891-4.776,10.667-10.667,10.667s-10.667-4.776-10.667-10.667v-85.333c0-5.891,4.776-10.667,10.667-10.667
+		c3.357,0,6.519,1.581,8.533,4.267l44.8,59.733v-53.333c0-5.891,4.776-10.667,10.667-10.667c5.891,0,10.667,4.776,10.667,10.667
+		v85.333c-0.003,4.589-2.942,8.662-7.296,10.112C183.618,309.146,182.48,309.333,181.333,309.333z"/>
+                                    <path style="fill:#FAFAFA;" d="M266.667,309.333H224c-5.891,0-10.667-4.776-10.667-10.667v-85.333
+		c0-5.891,4.776-10.667,10.667-10.667h42.667c5.891,0,10.667,4.776,10.667,10.667c0,5.891-4.776,10.667-10.667,10.667h-32v64h32
+		c5.891,0,10.667,4.776,10.667,10.667C277.333,304.558,272.558,309.333,266.667,309.333z"/>
+                                    <path style="fill:#FAFAFA;" d="M266.667,266.667H224c-5.891,0-10.667-4.776-10.667-10.667c0-5.891,4.776-10.667,10.667-10.667
+		h42.667c5.891,0,10.667,4.776,10.667,10.667C277.333,261.891,272.558,266.667,266.667,266.667z"/>
+                                    <path style="fill:#FAFAFA;" d="M373.333,309.333c-4.597,0.006-8.681-2.934-10.133-7.296L352,268.395l-11.2,33.643
+		c-1.283,4.66-5.726,7.727-10.539,7.275c-4.738-0.18-8.788-3.465-9.941-8.064l-21.333-85.333c-1.426-5.72,2.056-11.513,7.776-12.939
+		c5.72-1.426,11.513,2.056,12.939,7.776l12.437,49.792l9.749-29.248c2.535-5.591,9.122-8.068,14.713-5.533
+		c2.454,1.113,4.42,3.079,5.533,5.533l9.749,29.248l12.437-49.792c1.426-5.72,7.218-9.202,12.939-7.776
+		c5.72,1.426,9.202,7.218,7.776,12.939l-21.333,85.333c-1.153,4.599-5.204,7.884-9.941,8.064L373.333,309.333z"/>
+</g>
+</svg>
+                            Latest movies
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-secondary" (click)="getLastWeekMovies()"
+                                style="height: 30px; font-size: 14px;">
+                            <svg id="Capa_1" enable-background="new 0 0 482 482" height="16" viewBox="0 0 482 482"
+                                 width="20" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="m0 140.5v336h241l23-164-23-172-113-28z" fill="#f5f8f9"/>
+                                    <path d="m482 140.5-115-33-126 33v336h241z" fill="#e3eaee"/>
+                                    <path d="m0 50.5v90h241l19-43-19-47z" fill="#ff3f5c"/>
+                                    <path d="m241 50.5h241v90h-241z" fill="#ca2e43"/>
+                                    <path d="m105.5 5.5h30v90h-30z" fill="#c2bce0"/>
+                                    <path d="m346.5 5.5h30v90h-30z" fill="#a299d1"/>
+                                    <path d="m45 401.5h76v30h-76z" fill="#6e61b6"/>
+                                    <path d="m407 401.5h30v30h-30z" fill="#463b84"/>
+                                    <path d="m347 401.5h30v30h-30z" fill="#463b84"/>
+                                    <path d="m191.992 416.249 27.271 12.502 21.737-47.415 9-48.836-9-23.15z"
+                                          fill="#6e61b6"/>
+                                    <path d="m181.861 192.5v30h59.139l9-14-9-16z" fill="#6e61b6"/>
+                                    <path d="m315.139 192.5h-74.139v30h39.816l-39.816 86.85v71.986l74.139-161.715z"
+                                          fill="#463b84"/>
+                                </g>
+                            </svg>
+                            Movies of the week
+                        </button>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+
+
+    </div>
+    <!--------end toppane-------->
+
+    <!--------leftpane-------->
+    <div class="leftpane">
+
+        <div class="card" style="width: 100%; height: 200px">
+
+            <div class="p-16">
+                <div class="h1">Digix Developers</div>
+                <div class="h4 secondary-text">Entertainment</div>
+            </div>
+
+            <div class="p-16 pt-0 line-height-1.75">
+                <p>
+                    <a href="https://www.facebook.com/" class="text-decoration-none">
+                        Visit our page
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                        </svg>
+                    </a>
+
+                    <br>
+                    <a href="https://www.twitter.com/" class="text-decoration-none">
+                        Join us on twitter
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-twitter" viewBox="0 0 16 16">
+                            <path
+                                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+
+        </div>
+        <div class="categories">
+            <app-all-categories (sendEventCategory)="getMoviesByCategory($event)"></app-all-categories>
+        </div>
+
+    </div>
+    <!--------end leftpane-------->
+
+    <!--------middlepane-------->
+    <div class="middlepane" style="text-align: center; margin-top: 10px">
+        <mat-tab-group [backgroundColor]="'primary'"(selectedTabChange)="tabChanged($event)" >
+            <mat-tab label="Welcome">
+                <div class="p-16">
+                    <div class="h1">Welcome to Digix website</div>
+                    <div class="h4 secondary-text">Enjoy</div>
+                </div>
+                <div style="margin-top: 20px">
+                    <app-all-films [search]="search" [critere]="critere" [filmsList]="filmsList"></app-all-films>
+                </div>
+            </mat-tab>
+            <mat-tab label="My space">
+                <app-all-films [search]="search" [critere]="critere" [filmsList]="filmsList"></app-all-films>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <!--------end middlepane-------->
+
+    <!--------rightpane-------->
+    <div class="rightpane">
+        <div>
+            <ng2-adsense
+                [adClient]="'pub-1919355092052389'"
+                [adSlot]="6259519706"
+                [display]="'inline-block'"
+                [width]="320"
+                [height]="108">
+            </ng2-adsense>
+        </div>
+
+        <!--      <ng-adsense></ng-adsense>-->
+
+
+        <h1 style="color: #e8b563;">Most visited</h1>
+        <a [routerLink]="linkToshow">
+            <figure class="snip1560">
+                <img [src]="itemMovie.img" alt="pr-sample23"/>
+                <figcaption>
+                    <h4>{{mostVisitedCategory}}</h4>
+                    <h2><span>{{itemMovie.title}}</span></h2>
+                    <h3>{{itemMovie.numVisits}} Visit</h3>
+                </figcaption>
+            </figure>
+        </a>
+
+        <!--  <app-film-item [itemOfFilmsList]="itemMovie"></app-film-item>-->
+
+        <div class="card" style="width: 100%; height: auto">
+
+            <div class="p-16">
+                <h2 style="color: #e8b563"><span>Top 5 movies</span></h2>
+                <div class="h4 secondary-text">Entertainment</div>
+            </div>
+
+            <div class="p-16 pt-0 line-height-1.75">
+                <ul *ngFor="let itemTop of topfilmsList">
+                    <li>{{itemTop.title}}</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--------end rightpane-------->
+</div>

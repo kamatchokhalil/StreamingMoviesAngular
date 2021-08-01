@@ -1,0 +1,164 @@
+<div class="card" style="width: 50%; margin: auto; position: relative; background-color: #ececee">
+    <div class="card-header">
+        <div class="container">
+            <form #f="ngForm" (ngSubmit)="editFilm(f)">
+                <br>
+                <h3 style="color: cornflowerblue">Digix Movies</h3>
+
+                <br>
+
+                <div class="div_url">
+                    <label for="div_url">
+                        Url au lieu d'uploder une video :
+                    </label>
+                    <input type="text" class="form-control" name="url" id="div_url"
+                           pattern="(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"
+                           placeholder="Titre du film" required="required" autocapitalize="off" autocomplete="off"
+                           autocorrect="off" autofocus="autofocus" [(ngModel)]="filmToEdit.url" #url="ngModel">
+                    <div class="alert alert-danger" *ngIf="url.invalid && url.touched">
+                        <div *ngIf="url.errors.required">
+                            Champ " Url " obligatoire
+                        </div>
+                        <div *ngIf="url.errors.pattern">
+                            Vous devez mettre un lien youtube uniquement
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+
+                <div class="row">
+
+                    <div class="col">
+                        <label for="div_title">
+                            Titre :
+                        </label>
+                        <input type="text" class="form-control" name="title" id="div_title"
+                               placeholder="{{oldFilm.title}}" required="required" autocapitalize="off"
+                               autocomplete="off"
+                               autocorrect="off" autofocus="autofocus" [(ngModel)]="filmToEdit.title" #titre="ngModel">
+                        <div class="alert alert-danger" *ngIf="titre.invalid && titre.touched">
+                            Champ " Titre " obligatoire
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label for="dropdown">
+                            Catégorie :
+                        </label>
+                        <select class="form-control" required [(ngModel)]="categorieId"
+                                (change)="selectOption($event)"
+                                id="dropdown"
+                                name="dropdownCategories" #list="ngModel">
+
+                            <option *ngFor="let item of categoriesList" [ngValue]="item.id">{{item.title}}</option>
+                            <option class="dropdown-item" disabled selected value="undefined">-- Catégorie --</option>
+                        </select>
+
+                        <div class="alert alert-danger" *ngIf="list.invalid && list.touched">
+                            Vous devez choisir une catégorie
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label for="div_date">
+                            Date de sortie :
+                        </label>
+                        <input type="date" class="form-control" required name="date" id="div_date"
+                               [(ngModel)]="filmToEdit.dateSortie" #champDate="ngModel">
+                        <div class="alert alert-danger" *ngIf="champDate.invalid && champDate.touched">
+                            Date de sortie - champ obligatoite
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label for="dropdownQuality">
+                            Qualité du film :
+                        </label>
+                        <select class="form-control" required id="dropdownQuality"
+                                name="dropdownQuality" [(ngModel)]="selectedIndex" #listquality="ngModel"
+                                (change)="selectQualityOption($event)">
+                            <option class="dropdown-item" selected value="1">2160p - 4k</option>
+                            <option class="dropdown-item" value="2">1440p - HD</option>
+                            <option class="dropdown-item" value="3">1080p - HD</option>
+                            <option class="dropdown-item" value="4">720p</option>
+                            <option class="dropdown-item" value="5">480p</option>
+                            <option class="dropdown-item" value="6">360p</option>
+                            <option class="dropdown-item" value="7">240p</option>
+                            <option class="dropdown-item" value="8">144p</option>
+
+                        </select>
+                        <div class="alert alert-danger" *ngIf="listquality.invalid && listquality.touched">
+                            Qualité - champ obligatoite
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <br>
+
+                <div class="div_summary">
+                    <label for="edit_summary">
+                        Summary :
+                    </label>
+                    <textarea class="form-control" name="summary" id="edit_summary"
+                              placeholder="Décrivez le film en quelques mots seulement pour plus de détails."
+                              rows="5" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus="autofocus"
+                              [(ngModel)]="oldFilm.summary"></textarea>
+                </div>
+
+                <br>
+
+
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" (change)="isChecked($event)"
+                                   [checked]="oldFilm.trans"
+                                   id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Film sous titré
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" (change)="isCheckedFree($event)"
+                                   [checked]="oldFilm.free"
+                                   id="flexCheckDefaultfree">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Frais de visionnage
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="imageUpload">
+                            L'image à afficher :
+                        </label>
+                        <section>
+                            <input class="btn btn-outline-primary" type="file" (change)="uploadImage($event)" id="imageUpload" name="imageUpload" [(ngModel)]="filmToEdit.img" required #input="ngModel">
+
+                            <!--    <button type="button" (click)="onUpload()">Upload</button>-->
+                        </section>
+                        <div class="alert alert-danger" *ngIf="input.invalid && input.touched">
+                            Champ obligatoire
+                        </div>
+                    </div>
+                </div>
+<br>
+<br>
+                <div class="col-12">
+                    <button style="float: right" class="btn btn-primary w-200" type="submit" [disabled]="f.invalid">
+                        Modifier
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+

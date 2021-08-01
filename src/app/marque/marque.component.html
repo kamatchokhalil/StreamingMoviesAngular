@@ -1,0 +1,6 @@
+<div *ngFor="let p of mq1">
+    {{p.nommarque}}
+    {{p.id}}
+
+    <button (click)="onDelete(p.id)">supp</button>
+    <a routerLink="/update/{{p.id}}"><button type="button">Update</button></a></div>

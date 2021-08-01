@@ -1,0 +1,156 @@
+<div class="card" style="width: 50%; margin: auto; position: relative; background-color: #ececee">
+    <div class="card-header">
+<div class="container">
+<form #f="ngForm" (ngSubmit)="addFilm(f)">
+
+    <br>
+    <h3 style="color: #3c4252">Upload un film sur Digix</h3>
+    <br>
+<div class="row">
+    <div class="col">
+
+            <label for="div_title">
+                Titre :
+            </label>
+            <input type="text" class="form-control w-200" name="title" id="div_title"
+                   placeholder="Titre du film" required="required" autocapitalize="off" autocomplete="off"
+                   autocorrect="off" autofocus="autofocus" [(ngModel)]="filmToUpload.title" #titre="ngModel">
+            <div class="alert alert-danger w-200" *ngIf="titre.invalid && titre.touched">
+                Champ " Titre " obligatoire
+            </div>
+
+    </div>
+    <div class="col">
+        <label for="dropdown">
+            Catégorie :
+        </label>
+
+
+            <select class="form-control w-200" required [(ngModel)]="categorieId" (change)="selectOption($event)" id="dropdown"
+                    name="dropdownCategories" #list="ngModel">
+                <option class="dropdown-item" disabled selected value="undefined">Choisissez une catégorie</option>
+                <option *ngFor="let item of categoriesList" [ngValue]="item.id">{{item.title}}</option>
+            </select>
+
+        <div class="alert alert-danger w-200" *ngIf="list.invalid && list.touched">
+            Vous devez choisir une catégorie
+        </div>
+    </div>
+
+</div>
+
+    <br>
+    <div class="row">
+
+        <div class="col">
+            <label for="filmUpload">
+                Video :
+            </label>
+            <section>
+                <input class="btn btn-outline-primary" type="file" (change)="uploadVideo($event)" id="filmUpload" accept="*.video/*" name="filmUpload" [(ngModel)]="filmToUpload.url" required #inputvideo="ngModel">
+                <!--    <button type="button" (click)="onUpload()">Upload</button>-->
+            </section>
+            <div class="alert alert-danger" *ngIf="inputvideo.invalid && inputvideo.touched">
+                Champ obligatoire
+            </div>
+        </div>
+
+        <div class="col">
+            <label for="imageUpload">
+                L'image à afficher :
+            </label>
+            <section>
+                <input class="btn btn-outline-primary" type="file" (change)="uploadImage($event)" id="imageUpload" accept="*.image/*" name="imageUpload" [(ngModel)]="filmToUpload.img" required #inputimg="ngModel">
+                <!--    <button type="button" (click)="onUpload()">Upload</button>-->
+            </section>
+            <div class="alert alert-danger" *ngIf="inputimg.invalid && inputimg.touched">
+                Champ obligatoire
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="div_summary">
+      <label for="edit_summary">
+        Summary :
+      </label>
+      <textarea class="form-control" name="summary" id="edit_summary"
+                placeholder="Décrivez le film en quelques mots seulement pour plus de détails."
+                rows="5" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus="autofocus"
+                [(ngModel)]="filmToUpload.summary"></textarea>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <label for="dropdownQuality">
+                Qualité du film :
+            </label>
+            <div class="form-select w-200">
+
+                <select class="form-control" required id="dropdownQuality"
+                        name="dropdownQuality" ngModel #listquality="ngModel" (change)="selectQualiryOption($event)">
+                    <option class="dropdown-item" disabled selected value="0"> -- Qualité --</option>
+                    <option class="dropdown-item" value="1">2160p - 4k</option>
+                    <option class="dropdown-item" value="2">1440p - HD</option>
+                    <option class="dropdown-item" value="3">1080p - HD</option>
+                    <option class="dropdown-item" value="4">720p</option>
+                    <option class="dropdown-item" value="5">480p</option>
+                    <option class="dropdown-item" value="6">360p</option>
+                    <option class="dropdown-item" value="7">240p</option>
+                    <option class="dropdown-item" value="8">144p</option>
+
+                </select>
+            </div>
+            <div class="alert alert-danger w-200" *ngIf="listquality.invalid && listquality.touched">
+                Qualité - champ obligatoite
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="div_date">
+                <label for="div_date">
+                    Date de sortie :
+                </label>
+                <input type="date" class="form-control w-200"  required name="date" id="div_date" [(ngModel)]="filmToUpload.dateSortie" #champDate="ngModel">
+                <div class="alert alert-danger" *ngIf="champDate.invalid && champDate.touched">
+                    Date de sortie - champ obligatoite
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <input class="form-check-input" type="checkbox" (change)="isChecked($event)" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Film sous titré
+                </label>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <input class="form-check-input" type="checkbox" (change)="isCheckedForFree($event)" id="flexCheckDefaultfree">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Frais de visionnage
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+
+
+    <div class="col-12">
+      <button style="float: right" class="btn btn-primary w-100" type="submit" [disabled]="f.invalid">Upload</button>
+    </div>
+</form>
+  </div>
+
+    </div>
+</div>
+

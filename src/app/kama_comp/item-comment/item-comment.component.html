@@ -1,0 +1,24 @@
+<div class="container">
+    <img class="img"
+         src="https://images.vexels.com/media/users/3/129616/isolated/preview/fb517f8913bd99cd48ef00facb4a67c0-businessman-avatar-silhouette-by-vexels.png">
+
+    <div>
+        {{itemReviewList.userID.lastName}}
+        {{itemReviewList.userID.name}}
+    </div>
+
+    <div>
+        <mat-icon role="img" aria-hidden="true"
+                  *ngFor="let i of [].constructor(itemReviewList.rate)"
+                  class="amber-600-fg mat-icon notranslate material-icons mat-icon-no-color">star
+        </mat-icon>
+    </div>
+
+
+    <br>
+    <p>{{itemReviewList.comment}}</p>
+    <a><span style="float: right; margin: 5px">{{itemReviewList.datecomment}}</span></a>
+    <span style="float: right; margin: 5px" *ngIf="itemReviewList.userID.id === userId">-</span>
+    <a *ngIf="itemReviewList.userID.id === userId"><span style="float: right; margin: 5px; cursor: pointer" (click)="delete()">Delete</span></a>
+</div>
+

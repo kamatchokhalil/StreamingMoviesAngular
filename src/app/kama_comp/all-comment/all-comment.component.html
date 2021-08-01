@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm" *ngFor="let item of listReview">
+            <app-item-comment (deleteReviewEvent)="deleteReview($event)" [itemReviewList]="item"></app-item-comment>
+        </div>
+    </div>
+</div>

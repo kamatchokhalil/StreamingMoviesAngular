@@ -1,0 +1,83 @@
+
+<div class="card text-center" style="width: 80%; margin: auto; position: relative">
+    <div class="card-header">
+        Add Store
+        <!--        <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>-->
+    </div>
+    <div class="card-body" style="margin-left: -500px">
+        <form (submit)="addStore()">
+        <!--        <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+
+        <div class="form-group">
+            <label for="name">Name | Trade name</label>
+            <input name="tradename" type="text" class="form-control input-lg" id="name" placeholder="Enter Trade name" [(ngModel)]="name">
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="name">Responsible name</label>
+            <input type="text" class="form-control input-lg" id="responsible" placeholder="Enter responsible name" name="responsible" [(ngModel)]="responsible">
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="name">Capacity </label>
+            <input name="capacity" type="number" class="form-control input-lg" id="capacity"
+                   placeholder="Number of departments in a store" [(ngModel)]="capacity">
+
+        </div>
+            <br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label for="longitude">Longitude</label>
+
+                    <input name="longitude" id="longitude" type="number" class="form-control" placeholder="Enter number" [(ngModel)]="longitude">
+
+                </div>
+                <div class="col">
+                    <label for="laltitude">Laltitude</label>
+                    <input name="laltitude" id="laltitude" type="number" class="form-control" placeholder="Enter number" [(ngModel)]="laltitude">
+
+                </div>
+
+
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="region">Region</label>
+            <input name="region" type="text" class="form-control input-lg" id="region" placeholder="Enter region" [(ngModel)]="region">
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="form-check-label white-text">Availability : in exploit mode
+                <mat-checkbox name="availability" [(ngModel)]="availability"></mat-checkbox>
+            </label>
+        </div>
+        <br>
+
+        <div style="position: absolute; top: 30%; right: 10%">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d223111.15781040594!2d10.124110883865155!3d36.75188376468941!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sus!4v1625442972502!5m2!1sfr!2sus"
+                width="450" height="200" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <button class="btn btn-primary w-100" style="float: left; margin-left: 300px">Add store</button>
+        </form>
+    </div>
+</div>

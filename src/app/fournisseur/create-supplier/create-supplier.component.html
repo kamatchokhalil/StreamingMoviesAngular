@@ -1,0 +1,54 @@
+<div class="card text-center" style="width: 80%; margin: auto; position: relative">
+    <div class="card-header">
+        Add Supplier
+    </div>
+    <div class="card-body" style="margin-left: -500px">
+        <div *ngIf="error" class="alert alert-danger" role="alert">
+            Error while adding the supplier
+        </div>
+        <div *ngIf="success" class="alert alert-success" role="alert">
+            Supplier Added
+        </div>
+        <form>
+
+        <div class="form-group">
+            <label for="name">Supplier Name</label>
+            <input name="supplier_name" type="text" class="form-control input-lg" id="supplier_name"
+                placeholder="enter suppliername" [(ngModel)]="supplier_name">
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="region">Address</label>
+            <input name="address" type="text" class="form-control input-lg" id="address" placeholder="Enter address"
+                [(ngModel)]="address">
+
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="region">Number Phone</label>
+            <input name="number" type="number" class="form-control input-lg" id="number"
+                placeholder="Enter number phone" [(ngModel)]="number">
+
+        </div>
+        <br>
+        <br>
+
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" class="form-control input-lg" id="email" placeholder="Enter email" name="email"
+                [(ngModel)]="email">
+
+        </div>
+        <br>
+
+        <br>
+        <br>
+
+        <button class="btn btn-primary  float-right m-5" (click)="addSupplier()">Add Supplier</button>
+        </form>
+    </div>
+</div>
